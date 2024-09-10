@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'core/widgets/legends_agency_view.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:legends_management/core/routes/app_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,14 +11,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Legends ManageMent',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return ScreenUtilInit(
+      minTextAdapt: true,
+      splitScreenMode: true,
+      designSize: const Size(1440, 1024),
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        title: 'Legends ManageMent',
+        routerConfig: AppRouter.router,
       ),
-     
     );
   }
 }
