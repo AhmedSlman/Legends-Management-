@@ -13,51 +13,29 @@ class AdminHomeScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       body: Row(
         children: [
+          // Custom Drawer (Sidebar)
           Expanded(
             flex: 1,
             child: CustomDrawer(),
           ),
-          SizedBox(
-            width: 32,
-          ),
+          SizedBox(width: 32),
+
+          // Main Content Area
           Expanded(
             flex: 3,
             child: CustomScrollView(
               slivers: [
                 SliverFillRemaining(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SearchAndNotificationSection(),
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 2,
-                            child: Padding(
-                              padding: EdgeInsets.only(top: 28),
-                              child: EmployeesHomeSection(),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 24,
-                          ),
-                          // Expanded(
-                          //   child: Column(
-                          //     children: [
-                          //       SizedBox(
-                          //         height: 40,
-                          //       ),
-                          //       MyCardsAndTranstionHistorySection(),
-                          //       SizedBox(
-                          //         height: 24,
-                          //       ),
-                          //       Expanded(
-                          //         child: IncomeSection(),
-                          //       ),
-                          //     ],
-                          //   ),
-                          // ),
-                        ],
+                      SizedBox(height: 28),
+                      Expanded(
+                        flex: 2,
+                        child: EmployeesHomeSection(),
                       ),
+                      SizedBox(width: 24),
                     ],
                   ),
                 ),
@@ -69,7 +47,3 @@ class AdminHomeScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-

@@ -1,5 +1,5 @@
 abstract class RoutesPath {
-  static const String klegendsManagementView = '/';
+  static const String klegendsManagementView = '/f';
   static const String kWelcomeView = '/welcomeView';
   static const String kAdminSignUpView = '/adminSignUpView';
   static const String kEmployeeSignUpView = '/employeeSignUpView';
@@ -7,5 +7,5 @@ abstract class RoutesPath {
       '/adminSelectInformationView';
   static const String kAdminLoginView = '/adminLoginView';
   static const String kEmployeeLoginView = '/employeeLoginView';
-  static const String kAdminHomeScreen = '/adminHomeScreen';
+  static const String kAdminHomeScreen = '/';
 }
