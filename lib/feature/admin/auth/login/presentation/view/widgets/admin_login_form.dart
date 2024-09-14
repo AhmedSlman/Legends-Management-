@@ -95,6 +95,7 @@ class _AdminLoginFormState extends State<AdminLoginForm> {
                   buttonText: 'Login',
                   onPressed: () {
                     // Handle login action
+                    GoRouter.of(context).push(RoutesPath.kAdminHomeScreen);
                   },
                 ),
               ),
@@ -113,5 +114,3 @@ class _AdminLoginFormState extends State<AdminLoginForm> {
     );
   }
 }
-
-

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/utils/size_config.dart';
-import 'widgets/admin_login_form.dart';
+import 'widgets/admin_signup_form.dart';
 
 class AdminSignUpScreen extends StatelessWidget {
   const AdminSignUpScreen({super.key});
