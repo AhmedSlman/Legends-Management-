@@ -27,7 +27,6 @@ class TitleTextField extends StatelessWidget {
           height: 12,
         ),
         CustomTextField(
-          
           hint: hint,
         ),
       ],
