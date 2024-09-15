@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:legends_management/feature/admin/home/presentation/view/widgets/current_task_section.dart';
 
 import 'widgets/custom_drawer.dart';
 import 'widgets/employees_home_section.dart';
@@ -36,11 +37,16 @@ class AdminHomeScreen extends StatelessWidget {
                         child: EmployeesHomeSection(),
                       ),
                       SizedBox(width: 24),
+                      // CurrentTasksSection(),
                     ],
                   ),
                 ),
               ],
             ),
+          ),
+          // SizedBox(width: 320),
+          Expanded(
+            child: CurrentTasksSection(),
           ),
         ],
       ),
