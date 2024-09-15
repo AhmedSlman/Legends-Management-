@@ -2,6 +2,14 @@
 class Assets {
   Assets._();
   
+  /// Assets for imagesAccounting
+  /// assets/images/accounting.svg
+  static const String imagesAccounting = "assets/images/accounting.svg";
+
+  /// Assets for imagesAddbutton
+  /// assets/images/addbutton.svg
+  static const String imagesAddbutton = "assets/images/addbutton.svg";
+
   /// Assets for imagesAllprojects
   /// assets/images/allprojects.svg
   static const String imagesAllprojects = "assets/images/allprojects.svg";
@@ -18,6 +26,18 @@ class Assets {
   /// assets/images/departments.svg
   static const String imagesDepartments = "assets/images/departments.svg";
 
+  /// Assets for imagesDesign
+  /// assets/images/design.svg
+  static const String imagesDesign = "assets/images/design.svg";
+
+  /// Assets for imagesDevelopment
+  /// assets/images/development.svg
+  static const String imagesDevelopment = "assets/images/development.svg";
+
+  /// Assets for imagesHumanresources
+  /// assets/images/humanresources.svg
+  static const String imagesHumanresources = "assets/images/humanresources.svg";
+
   /// Assets for imagesLogo
   /// assets/images/logo.png
   static const String imagesLogo = "assets/images/logo.png";
@@ -26,6 +46,10 @@ class Assets {
   /// assets/images/logout.svg
   static const String imagesLogout = "assets/images/logout.svg";
 
+  /// Assets for imagesMarketing
+  /// assets/images/marketing.svg
+  static const String imagesMarketing = "assets/images/marketing.svg";
+
   /// Assets for imagesNotification
   /// assets/images/notification.svg
   static const String imagesNotification = "assets/images/notification.svg";
@@ -33,6 +57,10 @@ class Assets {
   /// Assets for imagesProfile
   /// assets/images/profile.svg
   static const String imagesProfile = "assets/images/profile.svg";
+
+  /// Assets for imagesSales
+  /// assets/images/sales.svg
+  static const String imagesSales = "assets/images/sales.svg";
 
   /// Assets for imagesSettings
   /// assets/images/settings.svg

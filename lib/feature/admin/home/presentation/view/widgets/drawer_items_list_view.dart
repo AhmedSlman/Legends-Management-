@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../../core/utils/app_images.dart';
 import '../../../data/drawer_item_model.dart';
 import 'drawer_item.dart';
 
 class DrawerItemsListView extends StatefulWidget {
+  final TabController tabController;
+  // final ScaffoldState scaffoldState;
+
   const DrawerItemsListView({
     super.key,
+    required this.tabController,
+    // required this.scaffoldState,
   });
 
   @override
@@ -15,6 +19,7 @@ class DrawerItemsListView extends StatefulWidget {
 
 class _DrawerItemsListViewState extends State<DrawerItemsListView> {
   int activeIndex = 0;
+
   final List<DrawerItemModel> items = [
     DrawerItemModel(title: 'Dashboard', image: Assets.imagesDashboard),
     DrawerItemModel(title: 'Departments', image: Assets.imagesDepartments),
@@ -34,13 +39,17 @@ class _DrawerItemsListViewState extends State<DrawerItemsListView> {
             if (activeIndex != index) {
               setState(() {
                 activeIndex = index;
+                widget.tabController.animateTo(index);
+
+                // Close the drawer if on mobile
+                // if (MediaQuery.sizeOf(context).width < SizeConfig.tablet) {
+                //   widget.scaffoldState.closeDrawer();
+                // }
               });
             }
           },
           child: Padding(
-            padding: const EdgeInsets.only(
-              top: 20,
-            ),
+            padding: const EdgeInsets.only(top: 20),
             child: DrawerItem(
               isActive: activeIndex == index,
               drawerItemModel: items[index],

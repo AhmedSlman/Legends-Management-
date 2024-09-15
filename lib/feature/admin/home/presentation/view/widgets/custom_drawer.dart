@@ -6,41 +6,57 @@ import 'active_and_inactive_item.dart';
 import 'drawer_items_list_view.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
+  final TabController tabController;
+  // final ScaffoldState scaffoldState;
+
+  const CustomDrawer({
+    super.key,
+    required this.tabController,
+    // required this.scaffoldState,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.sizeOf(context).width * .7,
-      color: Color.fromARGB(255, 26, 24, 32),
+      color: const Color.fromARGB(255, 26, 24, 32),
       child: CustomScrollView(
         slivers: [
           const SliverToBoxAdapter(
-            child: SizedBox(
-              height: 8,
+            child: SizedBox(height: 8),
+          ),
+          SliverToBoxAdapter(
+            child: Image.asset(
+              Assets.imagesLogo,
+              width: 171,
+              height: 99,
             ),
           ),
-          const DrawerItemsListView(),
+          const SliverToBoxAdapter(
+            child: SizedBox(height: 8),
+          ),
+          DrawerItemsListView(
+            tabController: tabController,
+            // scaffoldState: scaffoldState,
+          ),
           SliverFillRemaining(
             hasScrollBody: false,
             child: Column(
               children: [
-                const Expanded(
-                  child: SizedBox(
-                    height: 20,
+                const Expanded(child: SizedBox(height: 20)),
+                InActiveDrawerItem(
+                  drawerItemModel: DrawerItemModel(
+                    title: 'Setting system',
+                    image: Assets.imagesSettings,
                   ),
                 ),
                 InActiveDrawerItem(
                   drawerItemModel: DrawerItemModel(
-                      title: 'Setting system', image: Assets.imagesSettings),
+                    title: 'Logout account',
+                    image: Assets.imagesLogout,
+                  ),
                 ),
-                InActiveDrawerItem(
-                  drawerItemModel: DrawerItemModel(
-                      title: 'Logout account', image: Assets.imagesLogout),
-                ),
-                const SizedBox(
-                  height: 48,
-                ),
+                const SizedBox(height: 48),
               ],
             ),
           ),

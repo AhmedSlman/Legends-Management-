@@ -32,7 +32,8 @@ class AddEmployeeHeader extends StatelessWidget {
             ],
           ),
         ),
-         CustomButton(
+        CustomButton(
+          width: 79,
           buttonText: 'Add',
           onPressed: () {},
         ),
