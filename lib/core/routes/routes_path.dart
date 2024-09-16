@@ -7,5 +7,10 @@ abstract class RoutesPath {
       '/adminSelectInformationView';
   static const String kAdminLoginView = '/adminLoginView';
   static const String kEmployeeLoginView = '/employeeLoginView';
-  static const String kAdminHomeScreen = '/f';
+
+
+  static const String kAdminHomeScreen = '/fff';
+
+  static const String kEmployeHomeScreen = "/";
+
 }
