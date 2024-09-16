@@ -33,7 +33,7 @@ class _AdminLoginFormState extends State<AdminLoginForm> {
       ),
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(64.0),
+          padding: const EdgeInsets.all(32.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -66,6 +66,7 @@ class _AdminLoginFormState extends State<AdminLoginForm> {
                 height: 10,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Checkbox(
                     value: rememberMe,
