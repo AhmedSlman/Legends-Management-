@@ -14,14 +14,6 @@ class DepartmentsContent extends StatefulWidget {
 class _DepartmentsContentState extends State<DepartmentsContent> {
   int _selectedDepartmentIndex = -1; // No department selected initially
 
-  final List<String> _departmentNames = [
-    'Marketing',
-    'Sales',
-    'Design',
-    'Development',
-    'HR',
-    'Finance',
-  ];
 
   final List<Widget> _departmentContents = [
     const Center(child: Text('Marketing Content')),

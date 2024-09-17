@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import '../../../../../../core/utils/app_images.dart';
 import '../../../data/drawer_item_model.dart';
 import 'active_and_inactive_item.dart';
-import 'drawer_items_list_view.dart';
+import 'admin_drawer_items_list_view.dart';
 
-class CustomDrawer extends StatelessWidget {
+class AdminCustomDrawer extends StatelessWidget {
   final TabController tabController;
   // final ScaffoldState scaffoldState;
 
-  const CustomDrawer({
+  const AdminCustomDrawer({
     super.key,
     required this.tabController,
     // required this.scaffoldState,
@@ -35,7 +35,7 @@ class CustomDrawer extends StatelessWidget {
           const SliverToBoxAdapter(
             child: SizedBox(height: 8),
           ),
-          DrawerItemsListView(
+          AdminDrawerItemsListView(
             tabController: tabController,
             // scaffoldState: scaffoldState,
           ),

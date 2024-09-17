@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 import '../../../../../../core/utils/app_images.dart';
-import '../../../data/drawer_item_model.dart';
-import 'drawer_item.dart';
+import '../../../../admin/home/data/drawer_item_model.dart';
+import '../../../../admin/home/presentation/view/widgets/drawer_item.dart';
 
-class DrawerItemsListView extends StatefulWidget {
+class EmployeeDrawerItemsListView extends StatefulWidget {
   final TabController tabController;
   // final ScaffoldState scaffoldState;
 
-  const DrawerItemsListView({
+  const EmployeeDrawerItemsListView({
     super.key,
     required this.tabController,
     // required this.scaffoldState,
   });
 
   @override
-  State<DrawerItemsListView> createState() => _DrawerItemsListViewState();
+  State<EmployeeDrawerItemsListView> createState() =>
+      _AdminDrawerItemsListViewState();
 }
 
-class _DrawerItemsListViewState extends State<DrawerItemsListView> {
+class _AdminDrawerItemsListViewState
+    extends State<EmployeeDrawerItemsListView> {
   int activeIndex = 0;
 
   final List<DrawerItemModel> items = [
     DrawerItemModel(title: 'Dashboard', image: Assets.imagesDashboard),
-    DrawerItemModel(title: 'Departments', image: Assets.imagesDepartments),
-    DrawerItemModel(title: 'Shifts', image: Assets.imagesShifts),
     DrawerItemModel(title: 'Teams', image: Assets.imagesTeams),
     DrawerItemModel(title: 'All tasks', image: Assets.imagesAlltasks),
     DrawerItemModel(title: 'All Projects', image: Assets.imagesAllprojects),

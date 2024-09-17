@@ -1,52 +1,83 @@
 import 'package:flutter/material.dart';
-import 'package:legends_management/feature/admin/home/presentation/view/widgets/current_task_section.dart';
-import 'package:legends_management/feature/admin/home/presentation/view/widgets/custom_drawer.dart';
-import 'package:legends_management/feature/admin/home/presentation/view/widgets/search_notification_section.dart';
-import 'package:legends_management/feature/employe/home/presentation/componants/employee_home_dashbord_section.dart';
+import 'package:legends_management/feature/employe/home/presentation/componants/employee_custom_drawer.dart';
+import 'package:legends_management/feature/employe/home/presentation/views/employee_profile_screen.dart';
 
-class EmployeHomeScreen extends StatelessWidget {
+import '../../../../../core/utils/size_config.dart';
+import '../componants/employee_dashboard_view.dart';
+
+class EmployeHomeScreen extends StatefulWidget {
   const EmployeHomeScreen({super.key});
 
   @override
+  State<EmployeHomeScreen> createState() => _EmployeHomeScreenState();
+}
+
+class _EmployeHomeScreenState extends State<EmployeHomeScreen>
+    with SingleTickerProviderStateMixin {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+  late TabController _tabController;
+
+  final List<Widget> _tabsContent = [
+    const EmployeeDashBoardView(),
+    const EmployeeProfileScreen(),
+    const Center(child: Text('All tasks')),
+    const Center(child: Text('All Projects')),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: _tabsContent.length, vsync: this);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      key: scaffoldKey,
+      appBar: MediaQuery.sizeOf(context).width < SizeConfig.desktop
+          ? AppBar(
+              elevation: 0,
+              backgroundColor: Colors.black,
+              leading: IconButton(
+                icon: const Icon(
+                  Icons.menu,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  scaffoldKey.currentState?.openDrawer();
+                },
+              ),
+            )
+          : null,
+      drawer: MediaQuery.sizeOf(context).width < SizeConfig.tablet
+          ? EmployeeCustomDrawer(
+              tabController: _tabController,
+              // scaffoldState: scaffoldKey.currentState!,
+            )
+          : null,
       backgroundColor: Colors.black,
       body: Row(
         children: [
-          // Custom Drawer (Sidebar)
-          Expanded(
-            flex: 1,
-            child: CustomDrawer(),
-          ),
-          SizedBox(width: 32),
-
-          // Main Content Area
-          Expanded(
-            flex: 3,
-            child: CustomScrollView(
-              slivers: [
-                SliverFillRemaining(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SearchAndNotificationSection(),
-                      SizedBox(height: 28),
-                      Expanded(
-                        flex: 2,
-                        child: EmployeeHomeDashbordSection(),
-                      ),
-                      SizedBox(width: 24),
-                      // CurrentTasksSection(),
-                    ],
+          MediaQuery.sizeOf(context).width < SizeConfig.desktop
+              ? Container()
+              : Expanded(
+                  flex: 1,
+                  child: EmployeeCustomDrawer(
+                    tabController: _tabController,
+                    // scaffoldState: scaffoldKey.currentState!,
                   ),
                 ),
-              ],
+          const SizedBox(width: 32),
+
+          Expanded(
+            flex: 5,
+            child: TabBarView(
+              controller: _tabController,
+              children: _tabsContent,
             ),
           ),
-          // SizedBox(width: 320),
-          Expanded(
-            child: CurrentTasksSection(),
-          ),
+
+          // Main Content Area
         ],
       ),
     );

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/size_config.dart';
-import 'widgets/custom_drawer.dart';
+import 'widgets/admin_custom_drawer.dart';
 import 'widgets/dashboard_content.dart';
 import 'widgets/department/departments_content.dart';
 import 'widgets/shifts/shifts_content.dart';
@@ -54,7 +54,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
             )
           : null,
       drawer: MediaQuery.sizeOf(context).width < SizeConfig.tablet
-          ? CustomDrawer(
+          ? AdminCustomDrawer(
               tabController: _tabController,
               // scaffoldState: scaffoldKey.currentState!,
             )
@@ -66,7 +66,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
               ? Container()
               : Expanded(
                   flex: 2,
-                  child: CustomDrawer(
+                  child: AdminCustomDrawer(
                     tabController: _tabController,
                     // scaffoldState: scaffoldKey.currentState!,
                   ),
