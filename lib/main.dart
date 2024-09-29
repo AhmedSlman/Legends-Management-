@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:legends_management/core/routes/app_router.dart';
 
-void main() {
+import 'core/network/local/cache_helper.dart';
+import 'core/network/remote/dio_helper.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CacheHelper.init();
+  DioHelper.init();
   runApp(const MyApp());
 }
 

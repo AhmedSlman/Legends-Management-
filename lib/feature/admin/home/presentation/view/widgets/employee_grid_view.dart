@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:legends_management/core/routes/routes_path.dart';
 
 import '../../../../../../core/utils/size_config.dart';
 import 'single_employee_card.dart';

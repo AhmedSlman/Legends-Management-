@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:legends_management/feature/admin/auth/login/presentation/viewmodel/cubit/login_cubit.dart';
 
+import '../../../../../../../core/functions/show_toast.dart';
+import '../../../../../../../core/network/local/cache_helper.dart';
 import '../../../../../../../core/routes/routes_path.dart';
 import '../../../../../../../core/utils/app_styles.dart';
 import '../../../../../../../core/widgets/custom_button.dart';
@@ -18,6 +22,16 @@ class EmpolyeeLoginForm extends StatefulWidget {
 
 class _EmpolyeeLoginFormState extends State<EmpolyeeLoginForm> {
   bool rememberMe = false;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passWordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passWordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,53 +48,79 @@ class _EmpolyeeLoginFormState extends State<EmpolyeeLoginForm> {
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(64.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Welcome Back!',
-                style: AppStyles.styleBold40(context),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const TitleTextField(
-                title: 'Email',
-                hint: 'Enter Your Email',
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              const TitleTextField(
-                title: 'password',
-                hint: 'Enter Your password',
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const RememberAndForgetPassword(),
-              const SizedBox(
-                height: 25,
-              ),
-              Center(
-                child: CustomButton(
-                  width: 350.w,
-                  buttonText: 'Login',
-                  onPressed: () {
-                    // Handle login action
-                    GoRouter.of(context).push(RoutesPath.kEmployeHomeScreen);
+          child: BlocListener<LoginCubit, LoginState>(
+            listenWhen: (previous, current) =>
+                current is LoginSuccess || current is LoginFailure,
+            listener: (context, state) {
+              if (state is LoginSuccess) {
+                showToast(
+                    message: state.loginModel.message,
+                    state: ToastStates.SUCCESS);
+                CacheHelper.saveDate(
+                        key: 'token', value: state.loginModel.token)
+                    .then(
+                  (value) =>
+                      GoRouter.of(context).push(RoutesPath.kEmployeHomeScreen),
+                );
+              } else if (state is LoginFailure) {
+                showToast(message: state.errMsg, state: ToastStates.ERROR);
+              }
+            },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Welcome Back!',
+                  style: AppStyles.styleBold40(context),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TitleTextField(
+                  title: 'Email',
+                  hint: 'Enter Your Email',
+                  textEditingController: _emailController,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                TitleTextField(
+                  title: 'password',
+                  hint: 'Enter Your password',
+                  textEditingController: _passWordController,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const RememberAndForgetPassword(),
+                const SizedBox(
+                  height: 25,
+                ),
+                BlocBuilder<LoginCubit, LoginState>(
+                  builder: (context, state) {
+                    return Center(
+                      child: CustomButton(
+                        width: 350.w,
+                        buttonText: 'Login',
+                        onPressed: () {
+                          BlocProvider.of<LoginCubit>(context).userLogin(
+                              email: _emailController.text,
+                              passWord: _passWordController.text);
+                        },
+                      ),
+                    );
                   },
                 ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              GestureDetector(
-                onTap: () =>
-                    GoRouter.of(context).push(RoutesPath.kEmployeeSignUpView),
-                child: const DontHaveAccount(),
-              ),
-            ],
+                const SizedBox(
+                  height: 5,
+                ),
+                GestureDetector(
+                  onTap: () =>
+                      GoRouter.of(context).push(RoutesPath.kEmployeeSignUpView),
+                  child: const DontHaveAccount(),
+                ),
+              ],
+            ),
           ),
         ),
       ),

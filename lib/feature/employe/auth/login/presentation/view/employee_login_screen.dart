@@ -3,8 +3,8 @@ import 'package:legends_management/feature/employe/auth/login/presentation/view/
 
 import '../../../../../../core/utils/size_config.dart';
 
-class EmployeeLoginScreen extends StatelessWidget {
-  const EmployeeLoginScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

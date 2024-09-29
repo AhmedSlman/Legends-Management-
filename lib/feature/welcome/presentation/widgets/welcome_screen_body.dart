@@ -49,7 +49,7 @@ class WelcomeScreenBody extends StatelessWidget {
                       child: CustomButton(
                         buttonText: 'Log in As Admin',
                         onPressed: () {
-                          GoRouter.of(context).push(RoutesPath.kAdminLoginView);
+                          GoRouter.of(context).push(RoutesPath.kLoginView);
                         },
                       ),
                     ),
@@ -61,7 +61,7 @@ class WelcomeScreenBody extends StatelessWidget {
                         buttonText: 'Log in As Emloyee',
                         onPressed: () {
                           GoRouter.of(context)
-                              .push(RoutesPath.kEmployeeLoginView);
+                              .push(RoutesPath.kLoginView);
                         },
                       ),
                     )

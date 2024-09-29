@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:legends_management/core/widgets/legends_management_view.dart';
 import 'package:legends_management/feature/admin/auth/login/presentation/view/admin_login_screen.dart';
+import 'package:legends_management/feature/admin/auth/login/presentation/viewmodel/cubit/login_cubit.dart';
 import 'package:legends_management/feature/admin/auth/signup/presentation/view/admin_signup_screen.dart';
 import 'package:legends_management/feature/admin/auth/signup/presentation/view/select_information_screen.dart';
 import 'package:legends_management/feature/admin/home/presentation/view/admin_home_screen.dart';
@@ -48,15 +50,17 @@ abstract class AppRouter {
             const AdminLoginScreen(),
       ),
       GoRoute(
-        path: RoutesPath.kEmployeeLoginView,
-        builder: (BuildContext context, GoRouterState state) =>
-            const EmployeeLoginScreen(),
+        path: RoutesPath.kLoginView,
+        builder: (BuildContext context, GoRouterState state) => BlocProvider(
+          create: (context) => LoginCubit(),
+          child: const LoginScreen(),
+        ),
       ),
-      GoRoute(
-        path: RoutesPath.kAdminHomeScreen,
-        builder: (BuildContext context, GoRouterState state) =>
-            const AdminHomeScreen(),
-      ),
+      // GoRoute(
+      //   path: RoutesPath.kAdminHomeScreen,
+      //   builder: (BuildContext context, GoRouterState state) =>
+      //       const AdminHomeScreen(),
+      // ),
       GoRoute(
         path: RoutesPath.kEmployeHomeScreen,
         builder: (BuildContext context, GoRouterState state) =>

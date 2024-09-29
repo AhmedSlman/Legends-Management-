@@ -6,13 +6,15 @@ import '../../../../../../../core/widgets/custom_text_field.dart';
 
 class TitleTextField extends StatelessWidget {
   const TitleTextField({
-    super.key,
+    Key? key,
     required this.title,
     required this.hint,
-  });
+    required this.textEditingController,
+  }) : super(key: key);
 
   final String title;
   final String hint;
+  final TextEditingController textEditingController;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class TitleTextField extends StatelessWidget {
           height: 12,
         ),
         CustomTextField(
+          textEditingController: textEditingController,
           hint: hint,
         ),
       ],

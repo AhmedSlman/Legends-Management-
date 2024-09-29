@@ -13,86 +13,88 @@ class EmployeeSignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(32),
-      margin: const EdgeInsets.all(32),
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(
-            'assets/images/welcome_Rectangle.png',
-          ),
-          fit: BoxFit.fill,
-        ),
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Welcome To LEGENDS',
-              style: AppStyles.styleBold40(context),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const TitleTextField(
-              title: 'Name',
-              hint: 'Enter Your name',
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            const TitleTextField(
-              title: 'Email',
-              hint: 'Enter Your Email',
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            const TitleTextField(
-              title: 'Phone',
-              hint: 'Enter Your Phone',
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            const TitleTextField(
-              title: 'password',
-              hint: 'Enter Your password',
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            const TitleTextField(
-              title: 'Confirm password',
-              hint: 'Confirm password',
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Center(
-              child: CustomButton(
-                width: 350.w,
-                buttonText: 'Next',
-                onPressed: () {},
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            GestureDetector(
-              onTap: () =>
-                  GoRouter.of(context).push(RoutesPath.kEmployeeLoginView),
-              child: const Center(
-                child: AlreadyHaveAnAccount(),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+    // return Container(
+    //   padding: const EdgeInsets.all(32),
+    //   margin: const EdgeInsets.all(32),
+    //   decoration: const BoxDecoration(
+    //     image: DecorationImage(
+    //       image: AssetImage(
+    //         'assets/images/welcome_Rectangle.png',
+    //       ),
+    //       fit: BoxFit.fill,
+    //     ),
+    //   ),
+    //   child: SingleChildScrollView(
+    //     child: Column(
+    //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       children: [
+    //         Text(
+    //           'Welcome To LEGENDS',
+    //           style: AppStyles.styleBold40(context),
+    //         ),
+    //         const SizedBox(
+    //           height: 20,
+    //         ),
+    //         const TitleTextField(
+    //           title: 'Name',
+    //           hint: 'Enter Your name',
+    //         ),
+    //         const SizedBox(
+    //           height: 5,
+    //         ),
+    //         const TitleTextField(
+    //           title: 'Email',
+    //           hint: 'Enter Your Email',
+    //         ),
+    //         const SizedBox(
+    //           height: 5,
+    //         ),
+    //         const TitleTextField(
+    //           title: 'Phone',
+    //           hint: 'Enter Your Phone',
+    //         ),
+    //         const SizedBox(
+    //           height: 5,
+    //         ),
+    //         const SizedBox(
+    //           height: 5,
+    //         ),
+    //         const TitleTextField(
+    //           title: 'password',
+    //           hint: 'Enter Your password',
+    //         ),
+    //         const SizedBox(
+    //           height: 5,
+    //         ),
+    //         const TitleTextField(
+    //           title: 'Confirm password',
+    //           hint: 'Confirm password',
+    //         ),
+    //         const SizedBox(
+    //           height: 20,
+    //         ),
+    //         Center(
+    //           child: CustomButton(
+    //             width: 350.w,
+    //             buttonText: 'Next',
+    //             onPressed: () {},
+    //           ),
+    //         ),
+    //         const SizedBox(
+    //           height: 10,
+    //         ),
+    //         GestureDetector(
+    //           onTap: () =>
+    //               GoRouter.of(context).push(RoutesPath.kEmployeeLoginView),
+    //           child: const Center(
+    //             child: AlreadyHaveAnAccount(),
+    //           ),
+    //         )
+    //       ],
+    //     ),
+    //   ),
+    // );
+
+    return Container();
   }
 }

@@ -18,6 +18,9 @@ class AdminLoginForm extends StatefulWidget {
 
 class _AdminLoginFormState extends State<AdminLoginForm> {
   bool rememberMe = false;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passWordController = TextEditingController();
+  final TextEditingController _adminCode = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,23 +48,26 @@ class _AdminLoginFormState extends State<AdminLoginForm> {
               const SizedBox(
                 height: 20,
               ),
-              const TitleTextField(
+              TitleTextField(
                 title: 'Email',
                 hint: 'Enter Your Email',
+                textEditingController: _emailController,
               ),
               const SizedBox(
                 height: 5,
               ),
-              const TitleTextField(
+              TitleTextField(
                 title: 'Password',
                 hint: 'Enter Your password',
+                textEditingController: _passWordController,
               ),
               const SizedBox(
                 height: 5,
               ),
-              const TitleTextField(
+              TitleTextField(
                 title: 'Admin Code',
                 hint: 'Enter Your Admin Code',
+                textEditingController: _adminCode,
               ),
               const SizedBox(
                 height: 10,
@@ -98,4 +104,3 @@ class _AdminLoginFormState extends State<AdminLoginForm> {
     );
   }
 }
-

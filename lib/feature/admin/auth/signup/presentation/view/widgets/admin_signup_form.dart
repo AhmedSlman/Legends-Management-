@@ -13,95 +13,95 @@ class AdminSignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(32),
-      margin: const EdgeInsets.all(32),
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(
-            'assets/images/welcome_Rectangle.png',
-          ),
-          fit: BoxFit.fill,
-        ),
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Welcome To LEGENDS',
-              style: AppStyles.styleBold40(context),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const TitleTextField(
-              title: 'Name',
-              hint: 'Enter Your name',
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            const TitleTextField(
-              title: 'Email',
-              hint: 'Enter Your Email',
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            const TitleTextField(
-              title: 'Phone',
-              hint: 'Enter Your Phone',
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            const TitleTextField(
-              title: 'Admin Code',
-              hint: 'Enter Your Admin Code',
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            const TitleTextField(
-              title: 'password',
-              hint: 'Enter Your password',
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            const TitleTextField(
-              title: 'Confirm password',
-              hint: 'Confirm password',
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: CustomButton(
-                width: 350.w,
-                buttonText: 'Next',
-                onPressed: () {
-                  GoRouter.of(context)
-                      .push(RoutesPath.kAdminSelectInformationView);
-                },
-              ),
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Center(
-              child: GestureDetector(
-                onTap: () =>
-                    GoRouter.of(context).push(RoutesPath.kAdminLoginView),
-                child: const AlreadyHaveAnAccount(),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+    // return Container(
+    //   padding: const EdgeInsets.all(32),
+    //   margin: const EdgeInsets.all(32),
+    //   decoration: const BoxDecoration(
+    //     image: DecorationImage(
+    //       image: AssetImage(
+    //         'assets/images/welcome_Rectangle.png',
+    //       ),
+    //       fit: BoxFit.fill,
+    //     ),
+    //   ),
+    //   child: SingleChildScrollView(
+    //     child: Column(
+    //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       children: [
+    //         Text(
+    //           'Welcome To LEGENDS',
+    //           style: AppStyles.styleBold40(context),
+    //         ),
+    //         const SizedBox(
+    //           height: 20,
+    //         ),
+    //         const TitleTextField(
+    //           title: 'Name',
+    //           hint: 'Enter Your name',
+    //         ),
+    //         const SizedBox(
+    //           height: 5,
+    //         ),
+    //         const TitleTextField(
+    //           title: 'Email',
+    //           hint: 'Enter Your Email',
+    //         ),
+    //         const SizedBox(
+    //           height: 5,
+    //         ),
+    //         const TitleTextField(
+    //           title: 'Phone',
+    //           hint: 'Enter Your Phone',
+    //         ),
+    //         const SizedBox(
+    //           height: 5,
+    //         ),
+    //         const TitleTextField(
+    //           title: 'Admin Code',
+    //           hint: 'Enter Your Admin Code',
+    //         ),
+    //         const SizedBox(
+    //           height: 5,
+    //         ),
+    //         const TitleTextField(
+    //           title: 'password',
+    //           hint: 'Enter Your password',
+    //         ),
+    //         const SizedBox(
+    //           height: 5,
+    //         ),
+    //         const TitleTextField(
+    //           title: 'Confirm password',
+    //           hint: 'Confirm password',
+    //         ),
+    //         const SizedBox(
+    //           height: 10,
+    //         ),
+    //         Center(
+    //           child: CustomButton(
+    //             width: 350.w,
+    //             buttonText: 'Next',
+    //             onPressed: () {
+    //               GoRouter.of(context)
+    //                   .push(RoutesPath.kAdminSelectInformationView);
+    //             },
+    //           ),
+    //         ),
+    //         const SizedBox(
+    //           height: 5,
+    //         ),
+    //         Center(
+    //           child: GestureDetector(
+    //             onTap: () =>
+    //                 GoRouter.of(context).push(RoutesPath.kAdminLoginView),
+    //             child: const AlreadyHaveAnAccount(),
+    //           ),
+    //         )
+    //       ],
+    //     ),
+    //   ),
+    // );
+
+    return Container();
   }
 }
-
-

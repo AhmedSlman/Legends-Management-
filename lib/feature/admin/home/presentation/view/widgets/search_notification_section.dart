@@ -11,11 +11,11 @@ class SearchAndNotificationSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Flexible(
-          child: CustomTextField(
-            hint: 'Search',
-          ),
-        ),
+        // const Flexible(
+        //   child: CustomTextField(
+        //     hint: 'Search',
+        //   ),
+        // ),
         IconButton(
           onPressed: () {},
           icon: SvgPicture.asset(
