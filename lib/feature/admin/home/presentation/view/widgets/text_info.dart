@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:legends_management/core/utils/app_styles.dart';
 
 class TextInfo extends StatelessWidget {
   final String label;
@@ -13,13 +14,16 @@ class TextInfo extends StatelessWidget {
       children: [
         Text(
           '$label : ',
-          style: TextStyle(color: Colors.grey, fontSize: 14.sp),
+          style: AppStyles.styleRegular18(context),
         ),
         SizedBox(width: 8.w),
         Flexible(
           child: Text(
             value,
-            style: TextStyle(color: Colors.white, fontSize: 14.sp),
+            style: AppStyles.styleRegular18(context).copyWith(
+              color: Colors.grey,
+            ),
+            maxLines: 1,
           ),
         ),
       ],

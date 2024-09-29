@@ -9,14 +9,14 @@ class CustomLinearProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 40,
-      height: 13,
+      width: 75.w,
+      height: 13.h,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(10.r),
+        borderRadius: BorderRadius.circular(15.r),
         child: LinearProgressIndicator(
           value: 0.2,
           backgroundColor: Colors.white,
-          color: Colors.green,
+          color: const Color(0xff006654),
           minHeight: 10.h,
         ),
       ),

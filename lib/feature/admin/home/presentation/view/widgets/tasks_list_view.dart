@@ -18,7 +18,7 @@ class TasksListView extends StatelessWidget {
           progress: index % 2 == 0 ? 0.6 : 0.3,
           teamImages: List.generate(
             4,
-            (index) => Assets.imagesLogo,
+            (index) => Assets.imagesUser,
           ),
         );
       },

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:legends_management/core/routes/routes_path.dart';
 
 import '../../../../../../core/utils/size_config.dart';
 import 'single_employee_card.dart';
 
 class EmployeesGridView extends StatelessWidget {
-  const EmployeesGridView({super.key});
+  final VoidCallback onEmployeeTap;
+  const EmployeesGridView({super.key, required this.onEmployeeTap});
 
   @override
   Widget build(BuildContext context) {
@@ -12,16 +15,18 @@ class EmployeesGridView extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount:
-              MediaQuery.sizeOf(context).width > SizeConfig.desktop ? 2 : 1,
+          crossAxisCount: 2,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
           childAspectRatio:
-              MediaQuery.sizeOf(context).width > SizeConfig.desktop ? 1.2 : 3,
+              MediaQuery.sizeOf(context).width > SizeConfig.tablet ? 1 : .51,
         ),
         itemCount: 6,
         itemBuilder: (context, index) {
-          return const SingleEmployeeCard();
+          return GestureDetector(
+            onTap: onEmployeeTap,
+            child: const SingleEmployeeCard(),
+          );
         },
       ),
     );

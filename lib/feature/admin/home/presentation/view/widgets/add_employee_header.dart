@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:legends_management/core/utils/app_styles.dart';
 
 import '../../../../../../core/widgets/custom_button.dart';
 
@@ -16,18 +16,11 @@ class AddEmployeeHeader extends StatelessWidget {
             children: [
               TextSpan(
                 text: '27',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20.sp,
-                ),
+                style: AppStyles.styleRegular32(context),
               ),
               TextSpan(
                 text: 'Employee',
-                style: TextStyle(
-                  color: Colors.red,
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppStyles.styleRegularRed32(context),
               ),
             ],
           ),

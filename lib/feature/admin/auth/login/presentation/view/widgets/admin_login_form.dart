@@ -7,6 +7,7 @@ import '../../../../../../../core/utils/app_styles.dart';
 import '../../../../../../../core/widgets/custom_button.dart';
 import '../../../../signup/presentation/view/widgets/title_text_field.dart';
 import 'dont_have_account_widget.dart';
+import 'remember_and_forget_password_widget.dart';
 
 class AdminLoginForm extends StatefulWidget {
   const AdminLoginForm({super.key});
@@ -52,7 +53,7 @@ class _AdminLoginFormState extends State<AdminLoginForm> {
                 height: 5,
               ),
               const TitleTextField(
-                title: 'password',
+                title: 'Password',
                 hint: 'Enter Your password',
               ),
               const SizedBox(
@@ -65,28 +66,7 @@ class _AdminLoginFormState extends State<AdminLoginForm> {
               const SizedBox(
                 height: 10,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Checkbox(
-                    value: rememberMe,
-                    onChanged: (bool? newValue) {
-                      setState(() {
-                        rememberMe = newValue ?? false;
-                      });
-                    },
-                  ),
-                  Text('Remember Me', style: AppStyles.styleRegular16(context)),
-                  const Spacer(),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Text(
-                      'Forgot Password?',
-                      style: AppStyles.styleRegular16(context),
-                    ),
-                  ),
-                ],
-              ),
+              const RememberAndForgetPassword(),
               const SizedBox(
                 height: 25,
               ),
@@ -101,12 +81,15 @@ class _AdminLoginFormState extends State<AdminLoginForm> {
                 ),
               ),
               const SizedBox(
-                height: 5,
+                height: 10,
               ),
               GestureDetector(
                 onTap: () =>
                     GoRouter.of(context).push(RoutesPath.kAdminSignUpView),
                 child: const DontHaveAccount(),
+              ),
+              SizedBox(
+                height: 100.h,
               ),
             ],
           ),
@@ -115,3 +98,4 @@ class _AdminLoginFormState extends State<AdminLoginForm> {
     );
   }
 }
+

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:legends_management/core/utils/app_images.dart';
+import 'package:legends_management/core/utils/app_styles.dart';
 
 import '../../../../../../core/widgets/custom_linear_progress_indicator.dart';
 import 'text_info.dart';
@@ -25,7 +27,9 @@ class SingleEmployeeCard extends StatelessWidget {
             Row(
               children: [
                 CircleAvatar(
-                  backgroundImage: const AssetImage("assets/images/logo.png"),
+                  backgroundImage: const AssetImage(
+                    Assets.imagesUser,
+                  ),
                   radius: 35.r,
                 ),
                 SizedBox(width: 16.w),
@@ -34,19 +38,12 @@ class SingleEmployeeCard extends StatelessWidget {
                   children: [
                     Text(
                       'isabelle june',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: AppStyles.styleSemiBold20(context),
                     ),
                     SizedBox(height: 4.h),
                     Text(
                       'project Manager',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16.sp,
-                      ),
+                      style: AppStyles.styleRegularGrey16(context),
                     ),
                   ],
                 ),
@@ -70,18 +67,29 @@ class SingleEmployeeCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Current Task',
-                  style: TextStyle(color: Colors.white, fontSize: 16.sp),
+                Flexible(
+                  flex: 2,
+                  child: Text(
+                    'Current Task:',
+                    style: AppStyles.styleRegular18(context),
+                  ),
                 ),
                 SizedBox(width: 8.h),
-                Text(
-                  'In progress',
-                  style: TextStyle(color: Colors.orange, fontSize: 16.sp),
+                Flexible(
+                  flex: 2,
+                  child: Text(
+                    'In progress',
+                    style: AppStyles.styleRegular18(context).copyWith(
+                      color: Colors.red,
+                    ),
+                  ),
                 ),
                 SizedBox(width: 8.h),
                 // Progress Bar
-                const CustomLinearProgressIndicator(),
+                const Expanded(
+                  flex: 3,
+                  child: CustomLinearProgressIndicator(),
+                ),
               ],
             ),
 
@@ -89,19 +97,19 @@ class SingleEmployeeCard extends StatelessWidget {
             // Monthly Rate
             Row(
               children: [
-                Text(
-                  'Monthly Rate',
-                  style: TextStyle(color: Colors.white, fontSize: 16.sp),
+                const Text(
+                  'Monthly Rate:',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
-                Row(
+                Wrap(
+                  spacing: 4.w,
                   children: List.generate(
                     4,
                     (index) {
-                      return Icon(Icons.star,
-                          color: Colors.yellow, size: 14.sp);
+                      return Icon(Icons.star, color: Colors.yellow, size: 24.w);
                     },
                   )..add(
-                      Icon(Icons.star, color: Colors.grey, size: 14.sp),
+                      Icon(Icons.star, color: Colors.grey, size: 24.w),
                     ),
                 ),
               ],

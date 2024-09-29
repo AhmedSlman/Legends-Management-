@@ -45,14 +45,15 @@ class SingleTaskCard extends StatelessWidget {
               children: [
                 SizedBox(height: 16.h),
                 const TextInfo(
-                    label: 'Details:',
-                    value: 'Simply dummy text of the printing MORE..'),
+                  label: 'Details:',
+                  value: 'Simply dummy text of the printing MORE..',
+                ),
                 SizedBox(height: 16.h),
                 Row(
                   children: [
                     Text(
-                      'Status',
-                      style: TextStyle(color: Colors.grey, fontSize: 14.sp),
+                      'Status:',
+                      style: AppStyles.styleRegular18(context),
                     ),
                     const SizedBox(
                       width: 5,
@@ -64,7 +65,9 @@ class SingleTaskCard extends StatelessWidget {
                     ),
                     Text(
                       'in progess',
-                      style: TextStyle(color: Colors.red, fontSize: 14.sp),
+                      style: AppStyles.styleRegular18(context).copyWith(
+                        color: Colors.red,
+                      ),
                     ),
                   ],
                 ),
@@ -73,7 +76,7 @@ class SingleTaskCard extends StatelessWidget {
                   children: [
                     Text(
                       'Team:',
-                      style: TextStyle(color: Colors.grey, fontSize: 14.sp),
+                      style: AppStyles.styleRegular18(context),
                     ),
                     SizedBox(width: 8.w),
                     ...teamImages.map((image) {

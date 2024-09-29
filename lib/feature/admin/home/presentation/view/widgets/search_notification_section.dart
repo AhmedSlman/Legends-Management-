@@ -18,11 +18,13 @@ class SearchAndNotificationSection extends StatelessWidget {
         ),
         IconButton(
           onPressed: () {},
-          icon: SvgPicture.asset(Assets.imagesNotification),
+          icon: SvgPicture.asset(
+            Assets.imagesNotification,
+          ),
         ),
         CircleAvatar(
           child: SvgPicture.asset(
-            Assets.imagesProfile,
+            Assets.imagesUser,
           ),
         ),
       ],

@@ -14,7 +14,7 @@ class CurrentTasksHeader extends StatelessWidget {
       children: [
         Text(
           'Current Tasks',
-          style: AppStyles.styleSemiBold20(context),
+          style: AppStyles.styleRegular32(context),
         ),
         GestureDetector(
           onTap: () {

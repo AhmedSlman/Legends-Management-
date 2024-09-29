@@ -6,23 +6,75 @@ abstract class AppStyles {
   static TextStyle styleRegular16(context) {
     return TextStyle(
       color: Colors.white,
-      fontSize: getResponsiveFontSize(context, fontSize: 20),
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontWeight: FontWeight.w400,
+    );
+  }
+  static TextStyle styleRegularGrey16(context) {
+    return TextStyle(
+      color: Colors.grey,
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontWeight: FontWeight.w400,
+    );
+  }
+  static TextStyle styleRegular24(context) {
+    return TextStyle(
+      color: Colors.white,
+      fontSize: getResponsiveFontSize(context, fontSize: 24),
+      fontWeight: FontWeight.w300,
+    );
+  }
+  static TextStyle styleRegular32(context) {
+    return TextStyle(
+      color: Colors.white,
+      fontSize: getResponsiveFontSize(context, fontSize: 32),
+      fontWeight: FontWeight.w400,
+    );
+  }
+
+  static TextStyle styleRegular18(context) {
+    return TextStyle(
+      color: Colors.white,
+      fontSize: getResponsiveFontSize(context, fontSize: 18),
+      fontWeight: FontWeight.w400,
+    );
+  }
+
+  static TextStyle styleRegular14(context) {
+    return TextStyle(
+      color: Colors.white,
+      fontSize: getResponsiveFontSize(context, fontSize: 14),
       fontWeight: FontWeight.w400,
     );
   }
 
   static TextStyle styleBold40(context) {
     return TextStyle(
-      color: const Color(0xffFF4811),
-      fontSize: getResponsiveFontSize(context, fontSize: 40),
-      fontWeight: FontWeight.w800,
-    );
+        color: const Color(0xffFF4811),
+        fontSize: getResponsiveFontSize(context, fontSize: 40),
+        fontWeight: FontWeight.w800,
+        fontFamily: 'PostNoBillsJaffna');
+  }
+  static TextStyle styleRegularRed32(context) {
+    return TextStyle(
+        color: const Color(0xffFF4811),
+        fontSize: getResponsiveFontSize(context, fontSize: 32),
+        fontWeight: FontWeight.w800,
+        );
   }
 
   static TextStyle styleSemiBold20(context) {
     return TextStyle(
       color: Colors.white,
-      fontSize: getResponsiveFontSize(context, fontSize: 24),
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  static TextStyle styleSemiBold28(context) {
+    return TextStyle(
+      color: Colors.white,
+      fontSize: getResponsiveFontSize(context, fontSize: 28),
       fontWeight: FontWeight.w700,
     );
   }

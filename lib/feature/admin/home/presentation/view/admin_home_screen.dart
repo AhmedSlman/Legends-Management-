@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:legends_management/feature/employe/home/presentation/views/employee_profile_screen.dart';
 
 import '../../../../../core/utils/size_config.dart';
 import 'widgets/admin_custom_drawer.dart';
@@ -19,14 +20,37 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   late TabController _tabController;
 
-  final List<Widget> _tabsContent = [
-    const DashBoardContent(),
-    const DepartmentsContent(),
-    const ShiftsContent(),
-    const Center(child: Text('Teams')),
-    const Center(child: Text('All tasks')),
-    const Center(child: Text('All Projects')),
-  ];
+  bool _isEmployeeProfileVisible = false;
+
+  // Create tabs content dynamically based on the state
+  Widget get _currentDashBoardContent {
+    if (_isEmployeeProfileVisible) {
+      return const EmployeeProfileScreen(); // Placeholder for Employee Profile Screen
+    } else {
+      return DashBoardContent(
+        onEmployeeTap: _showEmployeeProfile,
+      );
+    }
+  }
+
+  // Tabs content (dashboard content will dynamically change)
+  List<Widget> get _tabsContent {
+    return [
+      _currentDashBoardContent, // Dynamic content for the dashboard
+      const DepartmentsContent(),
+      const ShiftsContent(),
+      const Center(child: Text('Teams')),
+      const Center(child: Text('All tasks')),
+      const Center(child: Text('All Projects')),
+    ];
+  }
+
+  // Function to navigate to employee profile
+  void _showEmployeeProfile() {
+    setState(() {
+      _isEmployeeProfileVisible = true;
+    });
+  }
 
   @override
   void initState() {
@@ -38,7 +62,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      appBar: MediaQuery.sizeOf(context).width < SizeConfig.desktop
+      appBar: MediaQuery.sizeOf(context).width < SizeConfig.tablet
           ? AppBar(
               elevation: 0,
               backgroundColor: Colors.black,
@@ -62,7 +86,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
       backgroundColor: Colors.black,
       body: Row(
         children: [
-          MediaQuery.sizeOf(context).width < SizeConfig.desktop
+          MediaQuery.sizeOf(context).width < SizeConfig.tablet
               ? Container()
               : Expanded(
                   flex: 2,

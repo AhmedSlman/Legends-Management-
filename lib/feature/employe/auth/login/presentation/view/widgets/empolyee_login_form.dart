@@ -6,6 +6,7 @@ import '../../../../../../../core/routes/routes_path.dart';
 import '../../../../../../../core/utils/app_styles.dart';
 import '../../../../../../../core/widgets/custom_button.dart';
 import '../../../../../../admin/auth/login/presentation/view/widgets/dont_have_account_widget.dart';
+import '../../../../../../admin/auth/login/presentation/view/widgets/remember_and_forget_password_widget.dart';
 import '../../../../../../admin/auth/signup/presentation/view/widgets/title_text_field.dart';
 
 class EmpolyeeLoginForm extends StatefulWidget {
@@ -57,27 +58,7 @@ class _EmpolyeeLoginFormState extends State<EmpolyeeLoginForm> {
               const SizedBox(
                 height: 10,
               ),
-              Row(
-                children: [
-                  Checkbox(
-                    value: rememberMe,
-                    onChanged: (bool? newValue) {
-                      setState(() {
-                        rememberMe = newValue ?? false;
-                      });
-                    },
-                  ),
-                  Text('Remember Me', style: AppStyles.styleRegular16(context)),
-                  const Spacer(),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Text(
-                      'Forgot Password?',
-                      style: AppStyles.styleRegular16(context),
-                    ),
-                  ),
-                ],
-              ),
+              const RememberAndForgetPassword(),
               const SizedBox(
                 height: 25,
               ),
@@ -87,6 +68,7 @@ class _EmpolyeeLoginFormState extends State<EmpolyeeLoginForm> {
                   buttonText: 'Login',
                   onPressed: () {
                     // Handle login action
+                    GoRouter.of(context).push(RoutesPath.kEmployeHomeScreen);
                   },
                 ),
               ),

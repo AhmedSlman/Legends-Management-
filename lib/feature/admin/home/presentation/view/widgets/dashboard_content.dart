@@ -6,7 +6,9 @@ import 'employees_home_section.dart';
 import 'search_notification_section.dart';
 
 class DashBoardContent extends StatelessWidget {
-  const DashBoardContent({super.key});
+  final VoidCallback onEmployeeTap;
+
+  const DashBoardContent({super.key, required this.onEmployeeTap});
 
   @override
   Widget build(BuildContext context) {
@@ -23,37 +25,41 @@ class DashBoardContent extends StatelessWidget {
 
               // Row containing EmployeesHomeSection and HomeTasksSection
               MediaQuery.sizeOf(context).width > SizeConfig.desktop
-                  ? const Expanded(
+                  ? Expanded(
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // EmployeesHomeSection
                           Expanded(
                             flex: 2,
-                            child: EmployeesHomeSection(),
+                            child: EmployeesHomeSection(
+                              onEmployeeTap: onEmployeeTap,
+                            ),
                           ),
-                          SizedBox(width: 30),
+                          const SizedBox(width: 30),
 
                           // HomeTasksSection
-                          Expanded(
+                          const Expanded(
                             child: DashBoardTasksSection(),
                           ),
                         ],
                       ),
                     )
-                  : const Expanded(
+                  : Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // EmployeesHomeSection
                           Expanded(
                             flex: 2,
-                            child: EmployeesHomeSection(),
+                            child: EmployeesHomeSection(
+                              onEmployeeTap: onEmployeeTap,
+                            ),
                           ),
-                          SizedBox(width: 30),
+                          const SizedBox(width: 30),
 
                           // HomeTasksSection
-                          Expanded(
+                          const Expanded(
                             child: DashBoardTasksSection(),
                           ),
                         ],

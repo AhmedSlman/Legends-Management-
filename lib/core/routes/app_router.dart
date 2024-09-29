@@ -8,6 +8,7 @@ import 'package:legends_management/feature/admin/home/presentation/view/admin_ho
 import 'package:legends_management/feature/employe/auth/login/presentation/view/employee_login_screen.dart';
 import 'package:legends_management/feature/employe/auth/signup/presentation/view/employee_signup_screen.dart';
 import 'package:legends_management/feature/employe/home/presentation/views/employe_home_view.dart';
+import 'package:legends_management/feature/employe/home/presentation/views/employee_profile_screen.dart';
 import 'package:legends_management/feature/welcome/presentation/web/welcome_screen_web.dart';
 
 import 'routes_path.dart';
@@ -60,6 +61,11 @@ abstract class AppRouter {
         path: RoutesPath.kEmployeHomeScreen,
         builder: (BuildContext context, GoRouterState state) =>
             const EmployeHomeScreen(),
+      ),
+      GoRoute(
+        path: RoutesPath.kEmployeProfileScreen,
+        builder: (BuildContext context, GoRouterState state) =>
+            const EmployeeProfileScreen(),
       ),
     ],
   );

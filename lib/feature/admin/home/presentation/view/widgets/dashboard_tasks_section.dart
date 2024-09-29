@@ -8,13 +8,21 @@ class DashBoardTasksSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        CurrentTasksHeader(),
-        Expanded(
-          child: TasksListView(),
-        ),
-      ],
+    return const Padding(
+      padding: EdgeInsets.only(
+        right: 8.0,
+      ),
+      child: Column(
+        children: [
+          CurrentTasksHeader(),
+          SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            child: TasksListView(),
+          ),
+        ],
+      ),
     );
   }
 }
