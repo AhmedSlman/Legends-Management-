@@ -11,15 +11,17 @@ class SingleTaskCard extends StatelessWidget {
 
   final String taskDetails;
   final String status;
-  final double progress;
-  final List<String> teamImages;
+  // final double progress;
+  // final List<String> teamImages;
+  final double value;
   const SingleTaskCard({
     super.key,
     required this.index,
     required this.taskDetails,
     required this.status,
-    required this.progress,
-    required this.teamImages,
+    // required this.progress,
+    // required this.teamImages,
+    required this.value,
   });
 
   @override
@@ -44,9 +46,9 @@ class SingleTaskCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 16.h),
-                const TextInfo(
+                TextInfo(
                   label: 'Details:',
-                  value: 'Simply dummy text of the printing MORE..',
+                  value: taskDetails,
                 ),
                 SizedBox(height: 16.h),
                 Row(
@@ -59,37 +61,41 @@ class SingleTaskCard extends StatelessWidget {
                       width: 5,
                     ),
                     // Progress Bar
-                    const CustomLinearProgressIndicator(),
+                    CustomLinearProgressIndicator(
+                      value: value,
+                    ),
                     const SizedBox(
                       width: 5,
                     ),
                     Text(
-                      'in progess',
+                      status,
                       style: AppStyles.styleRegular18(context).copyWith(
-                        color: Colors.red,
+                        color: status == 'pending' ? Colors.red : Colors.green,
                       ),
                     ),
                   ],
                 ),
                 SizedBox(height: 16.h),
-                Row(
-                  children: [
-                    Text(
-                      'Team:',
-                      style: AppStyles.styleRegular18(context),
-                    ),
-                    SizedBox(width: 8.w),
-                    ...teamImages.map((image) {
-                      return Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 4.0.w),
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage(image),
-                          radius: 15.r,
-                        ),
-                      );
-                    }),
-                  ],
-                ),
+                // Row(
+                //   children: [
+                //     Text(
+                //       'Team:',
+                //       style: AppStyles.styleRegular18(context),
+                //     ),
+                //     SizedBox(width: 8.w),
+                //     // ...teamImages.map(
+                //     //   (image) {
+                //     //     return Padding(
+                //     //       padding: EdgeInsets.symmetric(horizontal: 4.0.w),
+                //     //       child: CircleAvatar(
+                //     //         backgroundImage: AssetImage(image),
+                //     //         radius: 15.r,
+                //     //       ),
+                //     //     );
+                //     //   },
+                //     // ),
+                //   ],
+                // ),
               ],
             ),
           ),

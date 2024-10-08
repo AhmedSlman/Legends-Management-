@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../../../core/utils/app_images.dart';
+import '../../../../../../core/utils/size_config.dart';
 import '../../../data/drawer_item_model.dart';
 import 'drawer_item.dart';
 
@@ -23,11 +24,11 @@ class _AdminDrawerItemsListViewState extends State<AdminDrawerItemsListView> {
 
   final List<DrawerItemModel> items = [
     DrawerItemModel(title: 'Dashboard', image: Assets.imagesDashboard),
-    DrawerItemModel(title: 'Departments', image: Assets.imagesDepartments),
+    DrawerItemModel(title: 'Departments', image: Assets.imagesDepartmentswhite),
     DrawerItemModel(title: 'Shifts', image: Assets.imagesShifts),
-    DrawerItemModel(title: 'Teams', image: Assets.imagesTeams),
-    DrawerItemModel(title: 'All tasks', image: Assets.imagesAlltasks),
-    DrawerItemModel(title: 'All Projects', image: Assets.imagesAllprojects),
+    // DrawerItemModel(title: 'Teams', image: Assets.imagesTeams),
+    // DrawerItemModel(title: 'All tasks', image: Assets.imagesAlltasks),
+    // DrawerItemModel(title: 'All Projects', image: Assets.imagesAllprojects),
   ];
 
   @override
@@ -41,12 +42,10 @@ class _AdminDrawerItemsListViewState extends State<AdminDrawerItemsListView> {
               setState(() {
                 activeIndex = index;
                 widget.tabController.animateTo(index);
-
-                // Close the drawer if on mobile
-                // if (MediaQuery.sizeOf(context).width < SizeConfig.tablet) {
-                //   widget.scaffoldState.closeDrawer();
-                // }
               });
+            }
+            if (MediaQuery.of(context).size.width < SizeConfig.tablet) {
+              Navigator.of(context).pop(); // Close the drawer
             }
           },
           child: Padding(

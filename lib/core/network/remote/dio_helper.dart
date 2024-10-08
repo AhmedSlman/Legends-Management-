@@ -24,7 +24,8 @@ class DioHelper {
       String? token}) async {
     dio.options.headers = {
       'Accept': 'application/vnd.api+json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
     };
     Response response = await dio.post(endPoint, data: data);
     return response;

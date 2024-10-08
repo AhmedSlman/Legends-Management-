@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:legends_management/core/routes/routes_path.dart';
 
 import '../../../../../../../core/utils/app_styles.dart';
 
@@ -38,7 +40,7 @@ class _RememberAndForgetPasswordState extends State<RememberAndForgetPassword> {
         ),
         GestureDetector(
           onTap: () {
-            // Handle Forgot Password action
+            GoRouter.of(context).push(RoutesPath.kEmployeForgetPasswordScreen);
           },
           child: Text(
             'Forgot Password?',

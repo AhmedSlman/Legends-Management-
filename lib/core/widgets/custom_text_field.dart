@@ -1,28 +1,30 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-
 import '../utils/app_styles.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
-    Key? key,
+    super.key,
     required this.hint,
-    required this.textEditingController,
-  }) : super(key: key);
+    this.textEditingController,
+    this.obscureText = false, // Default to false
+  });
 
   final String hint;
-  final TextEditingController textEditingController;
+  final TextEditingController? textEditingController;
+  final bool obscureText; // New parameter
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: textEditingController,
+      obscureText: obscureText, // Set the obscureText property
+      style: const TextStyle(color: Colors.white), // Set text color to white
       decoration: InputDecoration(
         hintText: hint,
         hintStyle: AppStyles.styleSemiBold20(context).copyWith(
           color: const Color(0xff535353),
         ),
-        fillColor: const Color(0xff101013),
+        fillColor: const Color(0xff101013), // Background color
         filled: true,
         border: buildBorder(),
         enabledBorder: buildBorder(),

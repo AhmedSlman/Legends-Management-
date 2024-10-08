@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:legends_management/feature/employe/home/presentation/componants/employee_custom_drawer.dart';
-import 'package:legends_management/feature/employe/home/presentation/views/employee_profile_screen.dart';
+import 'package:legends_management/feature/employe/home/presentation/views/widgets/employee_custom_drawer.dart';
+import 'package:legends_management/feature/employe/profile/presentation/view/employee_profile_screen.dart';
 
 import '../../../../../core/utils/size_config.dart';
-import '../componants/employee_dashboard_view.dart';
+import 'widgets/employee_dashboard_view.dart';
 
 class EmployeHomeScreen extends StatefulWidget {
   const EmployeHomeScreen({super.key});
@@ -20,8 +20,6 @@ class _EmployeHomeScreenState extends State<EmployeHomeScreen>
   final List<Widget> _tabsContent = [
     const EmployeeDashBoardView(),
     const EmployeeProfileScreen(),
-    const Center(child: Text('All tasks')),
-    const Center(child: Text('All Projects')),
   ];
 
   @override

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../../core/utils/size_config.dart';
-import 'dashboard_tasks_section.dart';
+import '../../../../tasks/presentation/view/dashboard_tasks_section.dart';
 import 'employees_home_section.dart';
-import 'search_notification_section.dart';
 
 class DashBoardContent extends StatelessWidget {
   final VoidCallback onEmployeeTap;
@@ -14,60 +12,56 @@ class DashBoardContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        SliverFillRemaining(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 28),
-              // Search and Notification Section at the top
-              const SearchAndNotificationSection(),
-              const SizedBox(height: 28),
+        // Search and Notification Section
+        // const SliverToBoxAdapter(
+        //   child: SizedBox(height: 28),
+        // ),
+        // const SliverToBoxAdapter(
+        //   child: SearchAndNotificationSection(),
+        // ),
+        const SliverToBoxAdapter(
+          child: SizedBox(height: 28),
+        ),
 
-              // Row containing EmployeesHomeSection and HomeTasksSection
-              MediaQuery.sizeOf(context).width > SizeConfig.desktop
-                  ? Expanded(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // EmployeesHomeSection
-                          Expanded(
-                            flex: 2,
-                            child: EmployeesHomeSection(
-                              onEmployeeTap: onEmployeeTap,
-                            ),
-                          ),
-                          const SizedBox(width: 30),
-
-                          // HomeTasksSection
-                          const Expanded(
-                            child: DashBoardTasksSection(),
-                          ),
-                        ],
-                      ),
-                    )
-                  : Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // EmployeesHomeSection
-                          Expanded(
-                            flex: 2,
-                            child: EmployeesHomeSection(
-                              onEmployeeTap: onEmployeeTap,
-                            ),
-                          ),
-                          const SizedBox(width: 30),
-
-                          // HomeTasksSection
-                          const Expanded(
-                            child: DashBoardTasksSection(),
-                          ),
-                        ],
+        // Employees Section (Grid or List view depending on the device size)
+        MediaQuery.sizeOf(context).width > SizeConfig.desktop
+            ? SliverFillRemaining(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: EmployeesHomeSection(
+                        onEmployeeTap: onEmployeeTap,
                       ),
                     ),
-            ],
-          ),
-        ),
+                    const SizedBox(width: 30),
+                    const Expanded(
+                      child: DashBoardTasksSection(),
+                    ),
+                  ],
+                ),
+              )
+            : SliverList(
+                delegate: SliverChildListDelegate(
+                  [
+                    // Wrap in SizedBox or ConstrainedBox to provide height
+                    SizedBox(
+                      height: 300, // Set appropriate height for your content
+                      child: EmployeesHomeSection(
+                        onEmployeeTap: onEmployeeTap,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    const SizedBox(
+                      height: 400, // Set appropriate height for your content
+                      child: DashBoardTasksSection(),
+                    ),
+                  ],
+                ),
+              ),
+
+        // Tasks Section (Can be represented as a SliverList)
       ],
     );
   }

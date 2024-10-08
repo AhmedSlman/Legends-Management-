@@ -1,27 +1,27 @@
 class LoginModel {
   String? message;
   User? user;
-  String? employeeCode;
+  String? employeeCode; // Ensure this matches the API if it exists
   String? token;
 
   LoginModel({this.message, this.user, this.employeeCode, this.token});
 
-  LoginModel.fromJson(Map<String, dynamic> json) {
-    message = json['message'];
-    user = json['user'] != null ? User.fromJson(json['user']) : null;
-    employeeCode = json['employee_code'];
-    token = json['token'];
+  factory LoginModel.fromJson(Map<String, dynamic> json) {
+    return LoginModel(
+      message: json['message'] as String?,
+      user: json['user'] != null ? User.fromJson(json['user']) : null,
+      employeeCode: json['employee_code'] as String?,
+      token: json['token'] as String?,
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['message'] = message;
-    if (user != null) {
-      data['user'] = user!.toJson();
-    }
-    data['employee_code'] = employeeCode;
-    data['token'] = token;
-    return data;
+    return {
+      'message': message,
+      'user': user?.toJson(),
+      'employee_code': employeeCode,
+      'token': token,
+    };
   }
 }
 
@@ -31,53 +31,57 @@ class User {
   String? email;
   String? role;
   String? phone;
-  int? bankAccount;
-  Null emailVerifiedAt;
+  int? bankAccount; // Adjust this based on your API response
+  String? emailVerifiedAt; // Assuming it's a String, adjust as necessary
   String? createdAt;
   String? updatedAt;
-  Null departmentId;
-  Null levelId;
+  int? departmentId; // Changed to int?
+  int? levelId; // Changed to int?
 
-  User(
-      {this.id,
-      this.name,
-      this.email,
-      this.role,
-      this.phone,
-      this.bankAccount,
-      this.emailVerifiedAt,
-      this.createdAt,
-      this.updatedAt,
-      this.departmentId,
-      this.levelId});
+  User({
+    this.id,
+    this.name,
+    this.email,
+    this.role,
+    this.phone,
+    this.bankAccount,
+    this.emailVerifiedAt,
+    this.createdAt,
+    this.updatedAt,
+    this.departmentId,
+    this.levelId,
+  });
 
-  User.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    email = json['email'];
-    role = json['role'];
-    phone = json['phone'];
-    bankAccount = json['bank_account'];
-    emailVerifiedAt = json['email_verified_at'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    departmentId = json['department_id'];
-    levelId = json['level_id'];
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      id: json['id'] as int?,
+      name: json['name'] as String?,
+      email: json['email'] as String?,
+      role: json['role'] as String?,
+      phone: json['phone'] as String?,
+      bankAccount: json['bank_account'] as int?,
+      emailVerifiedAt:
+          json['email_verified_at'] as String?, // Assuming it's a String
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
+      departmentId: json['department_id'] as int?, // Changed to int?
+      levelId: json['level_id'] as int?, // Changed to int?
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['email'] = email;
-    data['role'] = role;
-    data['phone'] = phone;
-    data['bank_account'] = bankAccount;
-    data['email_verified_at'] = emailVerifiedAt;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    data['department_id'] = departmentId;
-    data['level_id'] = levelId;
-    return data;
+    return {
+      'id': id,
+      'name': name,
+      'email': email,
+      'role': role,
+      'phone': phone,
+      'bank_account': bankAccount,
+      'email_verified_at': emailVerifiedAt,
+      'created_at': createdAt,
+      'updated_at': updatedAt,
+      'department_id': departmentId,
+      'level_id': levelId,
+    };
   }
 }

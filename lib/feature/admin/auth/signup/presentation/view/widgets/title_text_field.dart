@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import '../../../../../../../core/utils/app_styles.dart';
@@ -10,11 +9,13 @@ class TitleTextField extends StatelessWidget {
     required this.title,
     required this.hint,
     required this.textEditingController,
+    this.obscureText = false, // Default to false
   }) : super(key: key);
 
   final String title;
   final String hint;
   final TextEditingController textEditingController;
+  final bool obscureText; // New parameter
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +30,10 @@ class TitleTextField extends StatelessWidget {
           height: 12,
         ),
         CustomTextField(
+          
           textEditingController: textEditingController,
           hint: hint,
+          obscureText: obscureText, // Pass the parameter
         ),
       ],
     );

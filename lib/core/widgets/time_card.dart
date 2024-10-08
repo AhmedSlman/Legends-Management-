@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:legends_management/core/utils/app_styles.dart';
 
 class TimeCard extends StatelessWidget {
   final String title;
@@ -18,10 +19,14 @@ class TimeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 120.w,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15.r),
-        color: Colors.grey[700],
+      width: 80.w,
+      // height: 49.h,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(7),
+          topRight: Radius.circular(7),
+        ),
+        color: Color(0xff333333),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,10 +41,7 @@ class TimeCard extends StatelessWidget {
             child: Text(
               title,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16.sp,
-              ),
+              style: AppStyles.styleRegular14(context),
             ),
           ),
           Padding(
@@ -49,17 +51,13 @@ class TimeCard extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: time,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: AppStyles.styleRegular14(context),
                   ),
                   TextSpan(
                     text: ' $period',
-                    style: TextStyle(
+                    style: AppStyles.styleRegular14(context).copyWith(
                       color: Colors.grey,
-                      fontSize: 14.sp,
+                      fontSize: 12,
                     ),
                   ),
                 ],
@@ -73,25 +71,42 @@ class TimeCard extends StatelessWidget {
 }
 
 class TimeCardRow extends StatelessWidget {
-  const TimeCardRow({super.key});
+  final String startTime;
+  final String startPeriod;
+  final String endTime;
+  final String endPeriod;
+
+  const TimeCardRow({
+    super.key,
+    required this.startTime,
+    required this.startPeriod,
+    required this.endTime,
+    required this.endPeriod,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const TimeCard(
-          title: 'Begin',
-          time: '8:00',
-          period: 'AM',
-          topColor: Color(0xFF00695C),
+        Expanded(
+          // width: 80.w,
+          child: TimeCard(
+            title: 'Begin',
+            time: startTime,
+            period: startPeriod,
+            topColor: const Color(0xFF00695C),
+          ),
         ),
-        SizedBox(width: 16.w),
-        const TimeCard(
-          title: 'End',
-          time: '3:00',
-          period: 'PM',
-          topColor: Color(0xFF004D60),
+        const SizedBox(width: 20),
+        Expanded(
+          // width: 80.w,
+          child: TimeCard(
+            title: 'End',
+            time: endTime,
+            period: endPeriod,
+            topColor: const Color(0xFF004D60),
+          ),
         ),
       ],
     );

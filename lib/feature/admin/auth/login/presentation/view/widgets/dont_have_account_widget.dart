@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../../../core/utils/app_styles.dart';
 
 class DontHaveAccount extends StatelessWidget {
   const DontHaveAccount({
@@ -14,17 +15,14 @@ class DontHaveAccount extends StatelessWidget {
           children: [
             TextSpan(
               text: 'Don\'t have account? ',
-              style: TextStyle(
+              style: AppStyles.styleRegular24(context).copyWith(
                 color: const Color(0xff535353),
-                fontSize: 20.sp,
               ),
             ),
             TextSpan(
               text: 'Signup',
-              style: TextStyle(
-                color: Colors.red,
-                fontSize: 20.sp,
-                fontWeight: FontWeight.bold,
+              style: AppStyles.styleRegular24(context).copyWith(
+                color: const Color(0xffFF4811),
               ),
             ),
           ],

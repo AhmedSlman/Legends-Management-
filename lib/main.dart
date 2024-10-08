@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:legends_management/core/routes/app_router.dart';
+import 'package:legends_management/feature/admin/department/presentation/viewmodel/ratingcubit/rating_cubit.dart';
 
 import 'core/network/local/cache_helper.dart';
 import 'core/network/remote/dio_helper.dart';
@@ -9,7 +11,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
   DioHelper.init();
-  runApp(const MyApp());
+  runApp(MultiBlocProvider(
+    providers: [
+    BlocProvider(
+      create: (context) => RatingCubit(),
+    ),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      minTextAdapt: true,
+      // minTextAdapt: true,
       splitScreenMode: true,
       designSize: const Size(1440, 1024),
       child: MaterialApp.router(

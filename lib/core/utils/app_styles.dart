@@ -10,6 +10,7 @@ abstract class AppStyles {
       fontWeight: FontWeight.w400,
     );
   }
+
   static TextStyle styleRegularGrey16(context) {
     return TextStyle(
       color: Colors.grey,
@@ -17,6 +18,7 @@ abstract class AppStyles {
       fontWeight: FontWeight.w400,
     );
   }
+
   static TextStyle styleRegular24(context) {
     return TextStyle(
       color: Colors.white,
@@ -24,6 +26,15 @@ abstract class AppStyles {
       fontWeight: FontWeight.w300,
     );
   }
+
+  static TextStyle styleRegular20(context) {
+    return TextStyle(
+      color: Colors.white,
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
+      fontWeight: FontWeight.w300,
+    );
+  }
+
   static TextStyle styleRegular32(context) {
     return TextStyle(
       color: Colors.white,
@@ -55,12 +66,13 @@ abstract class AppStyles {
         fontWeight: FontWeight.w800,
         fontFamily: 'PostNoBillsJaffna');
   }
+
   static TextStyle styleRegularRed32(context) {
     return TextStyle(
-        color: const Color(0xffFF4811),
-        fontSize: getResponsiveFontSize(context, fontSize: 32),
-        fontWeight: FontWeight.w800,
-        );
+      color: const Color(0xffFF4811),
+      fontSize: getResponsiveFontSize(context, fontSize: 32),
+      fontWeight: FontWeight.w800,
+    );
   }
 
   static TextStyle styleSemiBold20(context) {

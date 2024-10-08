@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:legends_management/feature/admin/auth/login/presentation/viewmodel/cubit/login_cubit.dart';
+import 'package:legends_management/feature/admin/auth/login/presentation/viewmodel/logincubit/login_cubit.dart';
 
 import '../../../../../../../core/functions/show_toast.dart';
 import '../../../../../../../core/network/local/cache_helper.dart';
@@ -54,9 +54,13 @@ class _EmpolyeeLoginFormState extends State<EmpolyeeLoginForm> {
             listener: (context, state) {
               if (state is LoginSuccess) {
                 showToast(
-                    message: state.loginModel.message,
+                    message: state.loginModel.message ?? '',
                     state: ToastStates.SUCCESS);
-                CacheHelper.saveDate(
+                CacheHelper.saveData(
+                    key: 'employee_name', value: state.loginModel.user?.name);
+                CacheHelper.saveData(
+                    key: 'employee_role', value: state.loginModel.user?.role);
+                CacheHelper.saveData(
                         key: 'token', value: state.loginModel.token)
                     .then(
                   (value) =>
@@ -88,6 +92,7 @@ class _EmpolyeeLoginFormState extends State<EmpolyeeLoginForm> {
                   title: 'password',
                   hint: 'Enter Your password',
                   textEditingController: _passWordController,
+                  obscureText: true,
                 ),
                 const SizedBox(
                   height: 10,
@@ -103,9 +108,17 @@ class _EmpolyeeLoginFormState extends State<EmpolyeeLoginForm> {
                         width: 350.w,
                         buttonText: 'Login',
                         onPressed: () {
-                          BlocProvider.of<LoginCubit>(context).userLogin(
+                          if (_emailController.text.isEmpty ||
+                              _passWordController.text.isEmpty) {
+                            showToast(
+                                message: 'Fields are required',
+                                state: ToastStates.ERROR);
+                          } else {
+                            BlocProvider.of<LoginCubit>(context).userLogin(
                               email: _emailController.text,
-                              passWord: _passWordController.text);
+                              passWord: _passWordController.text,
+                            );
+                          }
                         },
                       ),
                     );

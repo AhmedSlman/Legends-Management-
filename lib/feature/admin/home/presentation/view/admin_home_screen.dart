@@ -1,12 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:legends_management/feature/employe/home/presentation/views/employee_profile_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:legends_management/feature/admin/home/presentation/viewmodel/logoutcubit/logout_cubit.dart';
+import 'package:legends_management/feature/employe/profile/presentation/view/employee_profile_screen.dart';
 
 import '../../../../../core/utils/size_config.dart';
 import 'widgets/admin_custom_drawer.dart';
 import 'widgets/dashboard_content.dart';
-import 'widgets/department/departments_content.dart';
-import 'widgets/shifts/shifts_content.dart';
+import '../../../department/presentation/view/widgets/departments_content.dart';
+import '../../../shifts/presentation/view/shifts_content.dart';
 
 class AdminHomeScreen extends StatefulWidget {
   const AdminHomeScreen({super.key});
@@ -22,10 +24,9 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
 
   bool _isEmployeeProfileVisible = false;
 
-  // Create tabs content dynamically based on the state
   Widget get _currentDashBoardContent {
     if (_isEmployeeProfileVisible) {
-      return const EmployeeProfileScreen(); // Placeholder for Employee Profile Screen
+      return const EmployeeProfileScreen();
     } else {
       return DashBoardContent(
         onEmployeeTap: _showEmployeeProfile,
@@ -33,19 +34,16 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
     }
   }
 
-  // Tabs content (dashboard content will dynamically change)
   List<Widget> get _tabsContent {
     return [
-      _currentDashBoardContent, // Dynamic content for the dashboard
+      DashBoardContent(
+        onEmployeeTap: _showEmployeeProfile,
+      ),
       const DepartmentsContent(),
       const ShiftsContent(),
-      const Center(child: Text('Teams')),
-      const Center(child: Text('All tasks')),
-      const Center(child: Text('All Projects')),
     ];
   }
 
-  // Function to navigate to employee profile
   void _showEmployeeProfile() {
     setState(() {
       _isEmployeeProfileVisible = true;
@@ -78,9 +76,12 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
             )
           : null,
       drawer: MediaQuery.sizeOf(context).width < SizeConfig.tablet
-          ? AdminCustomDrawer(
-              tabController: _tabController,
-              // scaffoldState: scaffoldKey.currentState!,
+          ? BlocProvider(
+              create: (context) => LogoutCubit(),
+              child: AdminCustomDrawer(
+                tabController: _tabController,
+                // scaffoldState: scaffoldKey.currentState!,
+              ),
             )
           : null,
       backgroundColor: Colors.black,
@@ -90,9 +91,12 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
               ? Container()
               : Expanded(
                   flex: 2,
-                  child: AdminCustomDrawer(
-                    tabController: _tabController,
-                    // scaffoldState: scaffoldKey.currentState!,
+                  child: BlocProvider(
+                    create: (context) => LogoutCubit(),
+                    child: AdminCustomDrawer(
+                      tabController: _tabController,
+                      // scaffoldState: scaffoldKey.currentState!,
+                    ),
                   ),
                 ),
           const SizedBox(width: 10),

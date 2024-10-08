@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:legends_management/core/utils/app_styles.dart';
 
 class AlreadyHaveAnAccount extends StatelessWidget {
   const AlreadyHaveAnAccount({
@@ -13,17 +13,14 @@ class AlreadyHaveAnAccount extends StatelessWidget {
         children: [
           TextSpan(
             text: 'Already have an account? ',
-            style: TextStyle(
+            style: AppStyles.styleRegular24(context).copyWith(
               color: const Color(0xff535353),
-              fontSize: 20.sp,
             ),
           ),
           TextSpan(
             text: 'Login',
-            style: TextStyle(
-              color: Colors.red,
-              fontSize: 20.sp,
-              fontWeight: FontWeight.bold,
+            style: AppStyles.styleRegular24(context).copyWith(
+              color: const Color(0xffFF4811),
             ),
           ),
         ],
